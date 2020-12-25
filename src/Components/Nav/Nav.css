@@ -1,0 +1,11 @@
+.heading {
+    @apply text-2xl;
+}
+
+.nav-links {
+    @apply flex text-gray-400 text-xl;
+}
+
+.active {
+    @apply underline text-black;
+}
