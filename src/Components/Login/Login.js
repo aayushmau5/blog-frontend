@@ -6,7 +6,6 @@ function Login() {
 
   return (
     <>
-      <h1>Login</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="username">Username:</label>
         <input type="text" ref={register({ required: true })} name="username" />

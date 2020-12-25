@@ -1,5 +1,10 @@
 const invalidRoute = () => {
-    return <h1>404 Invalid Route</h1>
-}
+  return (
+    <div>
+        <div>404</div>
+        <div>Invalid Route</div>
+    </div>
+  );
+};
 
 export default invalidRoute;

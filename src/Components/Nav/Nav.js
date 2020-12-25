@@ -4,10 +4,10 @@ import "./Nav.css";
 
 function Header({ path }) {
   return (
-    <header className="flex justify-between p-2">
+    <header>
       <div className="heading">
-        <span className="text-gray-400">cd</span> aayushmau5
-        <span className="text-gray-400">\</span> blogs
+        <span>cd</span> aayushmau5
+        <span>\</span> blogs
       </div>
       <div className="nav-links">
         <NavLink exact to="/" className="mr-2">

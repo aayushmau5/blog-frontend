@@ -1,3 +1,4 @@
-.card {
-    @apply p-10 max-w-sm mx-auto bg-green-100 rounded-xl shadow-md flex items-center space-x-4
+.App {
+    height: 100%;
+    width: 100%;
 }
