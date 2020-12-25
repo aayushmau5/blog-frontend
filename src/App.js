@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Card from "./Components/Card/Card";
 import Login from "./Components/Login/Login";
 import Signup from "./Components/Signup/Signup";
-import invalidRoute from "./InvalidRoute";
+import invalidRoute from "./Components/Invalid/InvalidRoute";
 import Nav from "./Components/Nav/Nav";
 
 function App() {

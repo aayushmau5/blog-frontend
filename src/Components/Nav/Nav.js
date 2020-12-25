@@ -2,12 +2,12 @@ import { NavLink } from "react-router-dom";
 
 import "./Nav.css";
 
-function Header({ path }) {
+function Header() {
   return (
-    <header>
+    <header className="navbar">
       <div className="heading">
-        <span>cd</span> aayushmau5
-        <span>\</span> blogs
+        <span className="notImportant">cd</span> aayushmau5
+        <span className="notImportant">\</span> blogs
       </div>
       <div className="nav-links">
         <NavLink exact to="/" className="mr-2">

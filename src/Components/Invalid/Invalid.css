@@ -1,0 +1,13 @@
+.invalid-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 30px;
+}
+
+.invalid-status {
+  color: rgb(243, 141, 141);
+  font-size: 35px;
+}
