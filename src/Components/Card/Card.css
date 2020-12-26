@@ -2,7 +2,7 @@
   margin-bottom: 15px;
   display: flex;
   flex-direction: column;
-  min-width: 40%;
+  width: 40%;
   padding: 5px 10px;
 }
 
@@ -10,31 +10,31 @@
   border-left: 2px solid rgb(200, 200, 200);
 }
 
-.blog-title {
+.blogs-title {
   font-size: 24px;
   font-weight: 500;
 }
 
-.blog-title a {
+.blogs-title a {
   text-decoration: none;
   color: black;
 }
 
-.blog-post {
+.blogs-post {
   color: rgb(133, 122, 122);
   margin-bottom: 10px;
 }
 
-.blog-author {
+.blogs-author {
   font-size: 16px;
 }
 
-.blog-date {
+.blogs-date {
   font-size: 14px;
   color: rgb(133, 122, 122);
 }
 
-.blog-title a:hover {
+.blogs-title a:hover {
   text-decoration: underline;
 }
 

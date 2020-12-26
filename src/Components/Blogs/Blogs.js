@@ -9,7 +9,7 @@ function Blogs() {
   let display = "";
 
   const { status, data, error } = useQuery("blogs", () =>
-    axios.get("http://localhost:8080/blogs")
+    axios.get("/blogs")
   );
 
   if (data) {

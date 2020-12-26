@@ -10,12 +10,12 @@ function Card({ blogData }) {
   return (
     <>
       <div className="card">
-        <div className="blog-title">
+        <div className="blogs-title">
           <Link to={`blog/${blogData._id}`}>{blogData.title}</Link>
         </div>
-        <div className="blog-post">{summary}</div>
-        <div className="blog-author">{blogData.author.username}</div>
-        <div className="blog-date">{date}</div>
+        <div className="blogs-post">{summary}</div>
+        <div className="blogs-author">{blogData.author.username}</div>
+        <div className="blogs-date">{date}</div>
       </div>
     </>
   );

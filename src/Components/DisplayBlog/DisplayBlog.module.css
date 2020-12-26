@@ -1,0 +1,41 @@
+.BlogContainer {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  padding: 5px 10px;
+}
+
+.BlogTitle {
+  font-size: 35px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.BlogAuthor {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.BlogDate {
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+
+.BlogPost {
+  font-size: 18px;
+}
+
+.Back {
+  color: black;
+}
+
+.gray {
+  color: gray;
+}
+
+@media (max-width: 1000px) {
+  .BlogContainer {
+    width: 90%;
+  }
+}
