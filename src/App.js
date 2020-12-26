@@ -1,7 +1,7 @@
 import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import Card from "./Components/Card/Card";
+import Blogs from "./Components/Blogs/Blogs";
 import Login from "./Components/Login/Login";
 import Signup from "./Components/Signup/Signup";
 import invalidRoute from "./Components/Invalid/InvalidRoute";
@@ -13,7 +13,7 @@ function App() {
       <div className="App">
         <Nav />
         <Switch>
-          <Route exact path="/" render={(props) => <Card {...props} />} />
+          <Route exact path="/" render={(props) => <Blogs {...props} />} />
           <Route exact path="/login" render={(props) => <Login {...props} />} />
           <Route
             exact
