@@ -1,19 +1,27 @@
 import axios from "axios";
+import { useState } from "react";
 import { useQuery } from "react-query";
 
 import Card from "../Card/Card";
 import "./Blogs.css";
 
+const dataPerPage = 6;
+let totalPage = 1;
+
 function Blogs() {
+  const [page, setPage] = useState(1);
   let blogs = [];
   let display = "";
 
-  const { status, data, error } = useQuery("blogs", () =>
-    axios.get("/blogs")
+  const { status, data, error } = useQuery(
+    ["blogs", page],
+    () => axios.get(`/blogs?data=${dataPerPage}&page=${page}`),
+    { keepPreviousData: true }
   );
 
   if (data) {
     blogs = data.data.blogs;
+    totalPage = Math.ceil(data.data.totalBlogs / dataPerPage);
   }
 
   if (status === "loading") {
@@ -26,7 +34,16 @@ function Blogs() {
 
   return (
     <div className="blogs-home">
-      <h1>Blogs</h1>
+      <h1 className="blogs-heading">Blogs</h1>
+      <div className="pagination-links">
+        {page !== 1 ? (
+          <button onClick={() => setPage((oldVal) => oldVal - 1)}>Prev</button>
+        ) : null}
+        <div className="page-num">{page}</div>
+        {page !== totalPage ? (
+          <button onClick={() => setPage((oldVal) => oldVal + 1)}>Next</button>
+        ) : null}
+      </div>
       {display}
     </div>
   );

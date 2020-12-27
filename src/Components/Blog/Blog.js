@@ -8,8 +8,10 @@ function Blog({ match }) {
 
   let display = "";
 
-  const { status, data, error } = useQuery(["blog", blogId], () =>
-    axios.get(`/blogs/blog/${blogId}`)
+  const { status, data, error } = useQuery(
+    ["blog", blogId],
+    () => axios.get(`/blogs/blog/${blogId}`),
+    { retry: 1 }
   );
 
   if (status === "loading") {
