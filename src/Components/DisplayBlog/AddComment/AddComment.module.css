@@ -1,0 +1,51 @@
+.CommentFormContainer {
+  font-size: 18px;
+  width: 60%;
+}
+
+.CommentForm input {
+  border: 1px solid black;
+  font-family: inherit;
+  padding: 5px 10px;
+  font-size: 18px;
+  outline: none;
+}
+
+.CommentForm textarea {
+  border: 1px solid black;
+  font-family: inherit;
+  padding: 5px 10px;
+  outline: none;
+}
+
+.FormControl {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.FormControl label {
+  margin-right: 10px;
+}
+
+.heading {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.submitComment {
+  outline: none;
+  border: none;
+  background-color: black;
+  color: white;
+  font-family: inherit;
+  padding: 5px 10px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .CommentFormContainer {
+    width: 90%;
+  }
+}

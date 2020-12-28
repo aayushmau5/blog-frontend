@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 // import styles from "./Signup.module.css";
 
-function Signup() {
+function Signup({ history }) {
   const { register, handleSubmit, errors } = useForm();
   const [usernameError, setUsernameError] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -18,6 +18,7 @@ function Signup() {
           setSubmitting(false);
           // Directly login the user
           console.log(result);
+          history.push("/");
         }
       })
       .catch((err) => {

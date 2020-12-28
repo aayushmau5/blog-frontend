@@ -5,7 +5,6 @@ import styles from "./Blog.module.css";
 
 function Blog({ match, history }) {
   const blogId = match.params.blogId;
-  console.log(history);
 
   let display = "";
 

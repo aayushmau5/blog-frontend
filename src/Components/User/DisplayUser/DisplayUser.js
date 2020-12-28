@@ -2,7 +2,6 @@ import styles from "./DisplayUser.module.css";
 import { Link } from "react-router-dom";
 
 function DisplayUser({ userData }) {
-  console.log(userData);
   return (
     <div className={styles.UserContainer}>
       <div className={styles.Username}>
@@ -14,7 +13,7 @@ function DisplayUser({ userData }) {
 
         const summary = blog.post.slice(0, 80) + "...";
         return (
-          <div className="card">
+          <div key={blog._id} className="card">
             <div className="blogs-title">
               <Link to={`/blog/${blog._id}`}>{blog.title}</Link>
             </div>

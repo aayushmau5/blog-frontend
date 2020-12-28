@@ -43,8 +43,30 @@
   color: gray;
 }
 
+.CommentsContainer {
+  border-top: 2px solid black;
+  margin-top: 25px;
+  padding-top: 10px;
+  width: 60%;
+}
+
+.CommentHeading {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.CommentFormContainer {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
 @media (max-width: 1000px) {
   .BlogContainer {
+    width: 90%;
+  }
+
+  .CommentsContainer {
     width: 90%;
   }
 }

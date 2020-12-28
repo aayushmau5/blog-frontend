@@ -20,7 +20,7 @@
   color: rgb(161, 161, 161);
 }
 
-.nav-links > a:not(:last-child) {
+.nav-links > a {
   margin-right: 10px;
 }
 

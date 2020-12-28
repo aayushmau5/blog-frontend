@@ -1,8 +1,19 @@
 import { Link } from "react-router-dom";
+import AddComment from "./AddComment/AddComment";
 import styles from "./DisplayBlog.module.css";
+import DisplayComment from "./DisplayComment/DisplayComment";
 
 function DisplayBlog({ blogData, backTo }) {
   const blog = blogData.blog;
+  const comments = blogData.blog.comments;
+  let allComments = "No Comments";
+
+  if (comments.length !== 0) {
+    allComments = comments.map((comment) => (
+      <DisplayComment key={comment._id} commentData={comment} />
+    ));
+  }
+
   let date = new Date(blog.createdAt);
   date = date.toDateString();
   return (
@@ -23,6 +34,13 @@ function DisplayBlog({ blogData, backTo }) {
           {date}
         </div>
         <div className={styles.BlogPost}>{blog.post}</div>
+      </div>
+      <div className={styles.CommentsContainer}>
+        <div className={styles.CommentHeading}>Comments:</div>
+        {allComments}
+        <div className={styles.CommentFormContainer}>
+          <AddComment blogId={blog._id} />
+        </div>
       </div>
     </>
   );
