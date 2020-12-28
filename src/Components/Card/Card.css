@@ -15,7 +15,8 @@
   font-weight: 500;
 }
 
-.blogs-title a {
+.blogs-title a,
+.blogs-author a {
   text-decoration: none;
   color: black;
 }
@@ -34,7 +35,8 @@
   color: rgb(133, 122, 122);
 }
 
-.blogs-title a:hover {
+.blogs-title a:hover,
+.blogs-author a:hover {
   text-decoration: underline;
 }
 

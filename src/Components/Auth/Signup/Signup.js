@@ -1,12 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import styles from "./Signup.module.css";
+// import styles from "./Signup.module.css";
 
 function Signup() {
   const { register, handleSubmit, errors } = useForm();
   const [usernameError, setUsernameError] = useState("");
-  const [signedIn, setSignedIn] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
   const onSubmit = (data) => {
@@ -17,11 +16,11 @@ function Signup() {
       .then((result) => {
         if (result.status === 200) {
           setSubmitting(false);
-          setSignedIn(true);
+          // Directly login the user
+          console.log(result);
         }
       })
       .catch((err) => {
-        setSignedIn(false);
         setSubmitting(false);
         if (err.response.status === 409) {
           setUsernameError("Username already present");
@@ -34,9 +33,6 @@ function Signup() {
   return (
     <>
       <div className="form-container">
-        {signedIn && (
-          <div className={styles.signupIndicator}>Signed Up successfully</div>
-        )}
         {submitting && <div>Submitting....</div>}
         <form onSubmit={handleSubmit(onSubmit)} className="form">
           <div className="form-control">

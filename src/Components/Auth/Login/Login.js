@@ -18,6 +18,7 @@ function Login() {
       .then((result) => {
         if (result.status === 200) {
           setSubmitting(false);
+          // directly login the user
           console.log(result);
         }
       })

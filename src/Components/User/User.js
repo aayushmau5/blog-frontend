@@ -1,17 +1,16 @@
 import axios from "axios";
 import { useQuery } from "react-query";
-import DisplayBlog from "../DisplayBlog/DisplayBlog";
-import styles from "./Blog.module.css";
+import DisplayUser from "./DisplayUser/DisplayUser";
+import styles from "./User.module.css";
 
-function Blog({ match, history }) {
-  const blogId = match.params.blogId;
-  console.log(history);
+function User({ match }) {
+  const userId = match.params.userId;
 
   let display = "";
 
   const { status, data, error } = useQuery(
-    ["blog", blogId],
-    () => axios.get(`/blogs/blog/${blogId}`),
+    ["user", userId],
+    () => axios.get(`/user/${userId}`),
     { retry: 1 }
   );
 
@@ -24,10 +23,10 @@ function Blog({ match, history }) {
     }
     display = <h2 className="error">Error: {errorMessage}</h2>;
   } else {
-    display = <DisplayBlog backTo="/" blogData={data.data} />;
+    display = <DisplayUser userData={data.data} />;
   }
 
-  return <div className={styles.BlogContainer}>{display}</div>;
+  return <div className={styles.UserContainer}>{display}</div>;
 }
 
-export default Blog;
+export default User;

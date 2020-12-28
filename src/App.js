@@ -4,11 +4,12 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import axios from "axios";
 
 import Blogs from "./Components/Blogs/Blogs";
-import Login from "./Components/Login/Login";
-import Signup from "./Components/Signup/Signup";
+import Login from "./Components/Auth/Login/Login";
+import Signup from "./Components/Auth/Signup/Signup";
 import invalidRoute from "./Components/Invalid/InvalidRoute";
 import Nav from "./Components/Nav/Nav";
 import Blog from "./Components/Blog/Blog";
+import User from "./Components/User/User";
 
 axios.defaults.baseURL = "http://localhost:8080";
 
@@ -41,6 +42,15 @@ function App() {
             render={(props) => (
               <QueryClientProvider client={queryClient}>
                 <Blog {...props} />
+              </QueryClientProvider>
+            )}
+          />
+          <Route
+            exact
+            path="/user/:userId"
+            render={(props) => (
+              <QueryClientProvider client={queryClient}>
+                <User {...props} />
               </QueryClientProvider>
             )}
           />

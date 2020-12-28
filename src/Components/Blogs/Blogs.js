@@ -16,7 +16,7 @@ function Blogs() {
   const { status, data, error } = useQuery(
     ["blogs", page],
     () => axios.get(`/blogs?data=${dataPerPage}&page=${page}`),
-    { keepPreviousData: true }
+    { keepPreviousData: true, cacheTime: 900000 }
   );
 
   if (data) {
