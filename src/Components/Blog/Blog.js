@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 import DisplayBlog from "../DisplayBlog/DisplayBlog";
 import styles from "./Blog.module.css";
 
-function Blog({ match, history }) {
+function Blog({ match }) {
   const blogId = match.params.blogId;
 
   let display = "";

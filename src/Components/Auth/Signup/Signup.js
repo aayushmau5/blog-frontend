@@ -12,7 +12,7 @@ function Signup({ history }) {
     setSubmitting(true);
     setUsernameError("");
     axios
-      .post("/user/signup", data)
+      .post("/user/signup", data, { withCredentials: true })
       .then((result) => {
         if (result.status === 200) {
           setSubmitting(false);

@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
 import "./Login.css";
 import { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 
-function Login() {
+function Login({ validate }) {
   const { register, handleSubmit, errors } = useForm();
   const [loginError, setLoginError] = useState("");
   const [usernameError, setUsernameError] = useState("");
@@ -14,12 +14,13 @@ function Login() {
     setUsernameError("");
     setLoginError("");
     axios
-      .post("/user/login", data)
+      .post("/user/login", data, { withCredentials: true })
       .then((result) => {
         if (result.status === 200) {
           setSubmitting(false);
           // directly login the user
           console.log(result);
+          validate();
         }
       })
       .catch((err) => {
@@ -29,6 +30,7 @@ function Login() {
         } else if (err.response.status === 422) {
           setUsernameError(err.response.data.errors[0].username);
         }
+        setLoginError(err.response.data.error);
       });
   };
 
@@ -39,7 +41,9 @@ function Login() {
           {loginError !== "" && (
             <span className="form-login-error">{loginError}</span>
           )}
-          {submitting && <div className="form-login-submit">Submitting....</div>}
+          {submitting && (
+            <div className="form-login-submit">Submitting....</div>
+          )}
           <div className="form-control">
             <label htmlFor="username">Username:</label>
             <input
