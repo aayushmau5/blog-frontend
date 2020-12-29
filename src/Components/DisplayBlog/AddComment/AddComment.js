@@ -2,19 +2,24 @@ import { useState } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import styles from "./AddComment.module.css";
+import { useHistory, useLocation } from "react-router-dom";
 
 function AddComment({ blogId }) {
+  let history = useHistory();
+  let location = useLocation();
   const { register, handleSubmit, errors, setValue } = useForm();
   const [usernameError, setUsernameError] = useState("");
 
   const onSubmit = (data) => {
     setUsernameError("");
     axios
-    .post(`/blogs/blog/${blogId}/comment`, data)
-    .then((result) => {
-      if (result.status === 200) {
+      .post(`/blogs/blog/${blogId}/comment`, data)
+      .then((result) => {
+        if (result.status === 200) {
           setValue("username", "", { shouldValidate: false });
           setValue("comment", "", { shouldValidate: false });
+          history.push({ pathname: "/empty" });
+          history.replace({ pathname: location.pathname });
         }
       })
       .catch((err) => {
