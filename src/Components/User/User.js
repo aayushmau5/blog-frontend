@@ -23,7 +23,9 @@ function User({ match }) {
     }
     display = <h2 className="error">Error: {errorMessage}</h2>;
   } else {
-    display = <DisplayUser userData={data.data} showHeading={true} />;
+    display = (
+      <DisplayUser showDelete={false} userData={data.data} showHeading={true} />
+    );
   }
 
   return <div className={styles.UserContainer}>{display}</div>;

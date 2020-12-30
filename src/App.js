@@ -3,8 +3,8 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import ProtectedRoute from "./Components/Auth/ProtectedRoute/ProtectedRoute";
 
+import ProtectedRoute from "./Components/Auth/ProtectedRoute/ProtectedRoute";
 import Blogs from "./Components/Blogs/Blogs";
 import Login from "./Components/Auth/Login/Login";
 import Signup from "./Components/Auth/Signup/Signup";
@@ -14,6 +14,7 @@ import Blog from "./Components/Blog/Blog";
 import User from "./Components/User/User";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Logout from "./Components/Auth/Logout/Logout";
+import AddBlog from "./Components/AddBlog/AddBlog";
 
 axios.defaults.baseURL = "http://localhost:8080";
 
@@ -114,6 +115,15 @@ function App() {
           >
             <QueryClientProvider client={queryClient}>
               <Dashboard userId={userId} />
+            </QueryClientProvider>
+          </ProtectedRoute>
+          <ProtectedRoute
+            exact
+            path="/add-blog"
+            isAuthenticated={isAuthenticated}
+          >
+            <QueryClientProvider client={queryClient}>
+              <AddBlog userId={userId} />
             </QueryClientProvider>
           </ProtectedRoute>
           <Route

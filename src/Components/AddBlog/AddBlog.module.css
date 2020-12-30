@@ -1,0 +1,66 @@
+.AddBlogContainer {
+  margin: 15px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 5px 10px;
+}
+
+.EditorContainer {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  padding: 5px 10px;
+}
+
+.PostBtn {
+  outline: none;
+  border: 1px solid black;
+  color: white;
+  background-color: black;
+  font-family: inherit;
+  padding: 5px 10px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.Title {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.Title label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.Title input {
+  border: 1px solid black;
+  font-family: inherit;
+  font-size: 20px;
+  outline: none;
+  padding: 5px 10px;
+}
+
+.PostTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.Error {
+  text-align: center;
+  color: rgb(245, 110, 110);
+}
+
+@media (max-width: 1000px) {
+  .EditorContainer {
+    width: 90%;
+  }
+}

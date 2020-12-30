@@ -27,7 +27,7 @@ function Login({ validate, isAuthenticated, setId }) {
       })
       .catch((err) => {
         setSubmitting(false);
-        if (err.reponse) {
+        if (err.response) {
           if (err.response.status === 404) {
             setLoginError(err.response.data.error);
           } else if (err.response.status === 422) {

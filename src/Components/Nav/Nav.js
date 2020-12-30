@@ -27,6 +27,9 @@ function Header({ isAuthenticated }) {
             <NavLink exact to="/dashboard">
               Dashboard
             </NavLink>
+            <NavLink exact to="/add-blog">
+              Post
+            </NavLink>
             <NavLink exact to="/logout">
               Logout
             </NavLink>

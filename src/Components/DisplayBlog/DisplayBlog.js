@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import AddComment from "./AddComment/AddComment";
 import styles from "./DisplayBlog.module.css";
 import DisplayComment from "./DisplayComment/DisplayComment";
+import MDEditor from "@uiw/react-md-editor";
 
 function DisplayBlog({ blogData, backTo }) {
   const blog = blogData.blog;
@@ -33,7 +34,9 @@ function DisplayBlog({ blogData, backTo }) {
           <span className={styles.gray}>on </span>
           {date}
         </div>
-        <div className={styles.BlogPost}>{blog.post}</div>
+        <div className={styles.BlogPost}>
+          <MDEditor.Markdown source={blog.post}/>
+        </div>
       </div>
       <div className={styles.CommentsContainer}>
         <div className={styles.CommentHeading}>Comments:</div>

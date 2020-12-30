@@ -19,6 +19,18 @@
   font-weight: bold;
 }
 
+.PostBtn button {
+  outline: none;
+  border: 1px solid black;
+  color: white;
+  background-color: black;
+  font-family: inherit;
+  padding: 5px 10px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
 .gray {
   color: gray;
   font-weight: lighter;
