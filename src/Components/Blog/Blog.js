@@ -18,8 +18,10 @@ function Blog({ match }) {
     display = <h1>Loading....</h1>;
   } else if (status === "error") {
     let errorMessage = error.message;
-    if (error.response.status === 422) {
-      errorMessage = `${error.response.data.error}`;
+    if (error.response) {
+      if (error.response.status === 422) {
+        errorMessage = `${error.response.data.error}`;
+      }
     }
     display = <h2 className="error">Error: {errorMessage}</h2>;
   } else {

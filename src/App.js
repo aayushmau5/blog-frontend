@@ -13,6 +13,7 @@ import Nav from "./Components/Nav/Nav";
 import Blog from "./Components/Blog/Blog";
 import User from "./Components/User/User";
 import Dashboard from "./Components/Dashboard/Dashboard";
+import Logout from "./Components/Auth/Logout/Logout";
 
 axios.defaults.baseURL = "http://localhost:8080";
 
@@ -20,6 +21,7 @@ const queryClient = new QueryClient();
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userId, setUserId] = useState(null);
 
   const validate = () => {
     axios
@@ -38,14 +40,21 @@ function App() {
       });
   };
 
+  const changeUserId = (id) => {
+    localStorage.setItem("userId", id);
+    setUserId(id);
+  };
+
   useEffect(() => {
     validate();
+    const loggedid = localStorage.getItem("userId");
+    setUserId(loggedid);
   }, []);
 
   return (
     <BrowserRouter>
       <div className="App">
-        <Nav />
+        <Nav isAuthenticated={isAuthenticated} />
         <Switch>
           <Route
             exact
@@ -59,12 +68,26 @@ function App() {
           <Route
             exact
             path="/login"
-            render={(props) => <Login validate={validate} {...props} />}
+            render={(props) => (
+              <Login
+                isAuthenticated={isAuthenticated}
+                validate={validate}
+                setId={changeUserId}
+                {...props}
+              />
+            )}
           />
           <Route
             exact
             path="/signup"
-            render={(props) => <Signup {...props} />}
+            render={(props) => (
+              <Signup
+                isAuthenticated={isAuthenticated}
+                validate={validate}
+                setId={changeUserId}
+                {...props}
+              />
+            )}
           />
           <Route
             exact
@@ -84,9 +107,22 @@ function App() {
               </QueryClientProvider>
             )}
           />
-          <ProtectedRoute isAuthenticated={isAuthenticated}>
-            <Dashboard />
+          <ProtectedRoute
+            exact
+            path="/dashboard"
+            isAuthenticated={isAuthenticated}
+          >
+            <QueryClientProvider client={queryClient}>
+              <Dashboard userId={userId} />
+            </QueryClientProvider>
           </ProtectedRoute>
+          <Route
+            exact
+            path="/logout"
+            render={(props) => (
+              <Logout setId={changeUserId} validate={validate} {...props} />
+            )}
+          />
           <Route path="/" component={invalidRoute} />
         </Switch>
       </div>

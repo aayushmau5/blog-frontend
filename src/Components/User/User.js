@@ -23,7 +23,7 @@ function User({ match }) {
     }
     display = <h2 className="error">Error: {errorMessage}</h2>;
   } else {
-    display = <DisplayUser userData={data.data} />;
+    display = <DisplayUser userData={data.data} showHeading={true} />;
   }
 
   return <div className={styles.UserContainer}>{display}</div>;

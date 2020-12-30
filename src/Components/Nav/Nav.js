@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 import "./Nav.css";
 
-function Header() {
+function Header({ isAuthenticated }) {
   return (
     <header className="navbar">
       <div className="heading">
@@ -10,15 +10,28 @@ function Header() {
         <span className="notImportant">\</span> blogs
       </div>
       <div className="nav-links">
-        <NavLink exact to="/" className="mr-2">
+        <NavLink exact to="/">
           Home
         </NavLink>
-        <NavLink exact to="/login" className="mr-2">
-          Login
-        </NavLink>
-        <NavLink exact to="/signup" className="mr-2">
-          Signup
-        </NavLink>
+        {!isAuthenticated ? (
+          <>
+            <NavLink exact to="/login">
+              Login
+            </NavLink>
+            <NavLink exact to="/signup">
+              Signup
+            </NavLink>
+          </>
+        ) : (
+          <>
+            <NavLink exact to="/dashboard">
+              Dashboard
+            </NavLink>
+            <NavLink exact to="/logout">
+              Logout
+            </NavLink>
+          </>
+        )}
       </div>
     </header>
   );

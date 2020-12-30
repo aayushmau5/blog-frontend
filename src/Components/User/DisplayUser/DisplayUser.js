@@ -1,12 +1,14 @@
 import styles from "./DisplayUser.module.css";
 import { Link } from "react-router-dom";
 
-function DisplayUser({ userData }) {
+function DisplayUser({ userData, showHeading }) {
   return (
     <div className={styles.UserContainer}>
-      <div className={styles.Username}>
-        All blogs by "{userData.user.username}"
-      </div>
+      {showHeading ? (
+        <div className={styles.Username}>
+          All blogs by "{userData.user.username}"
+        </div>
+      ) : null}
       {userData.blogs.map((blog) => {
         let date = new Date(blog.createdAt);
         date = date.toDateString();
