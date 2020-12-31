@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import AddComment from "./AddComment/AddComment";
 import styles from "./DisplayBlog.module.css";
 import DisplayComment from "./DisplayComment/DisplayComment";
-import MDEditor from "@uiw/react-md-editor";
+import Markdown from "markdown-to-jsx";
 
 function DisplayBlog({ blogData, backTo }) {
   const blog = blogData.blog;
@@ -35,7 +35,25 @@ function DisplayBlog({ blogData, backTo }) {
           {date}
         </div>
         <div className={styles.BlogPost}>
-          <MDEditor.Markdown source={blog.post}/>
+          <Markdown
+            options={{
+              forceBlock: true,
+              overrides: {
+                pre: {
+                  props: {
+                    className: "code",
+                  },
+                },
+                blockquote: {
+                  props: {
+                    className: "quote",
+                  },
+                },
+              },
+            }}
+          >
+            {blog.post}
+          </Markdown>
         </div>
       </div>
       <div className={styles.CommentsContainer}>

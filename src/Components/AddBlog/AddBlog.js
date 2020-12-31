@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
-import MDEditor from "@uiw/react-md-editor";
 import { useHistory } from "react-router-dom";
+import Markdown from "markdown-to-jsx";
 
 import styles from "./AddBlog.module.css";
 
@@ -9,11 +9,16 @@ function AddBlog() {
   const history = useHistory();
 
   const [title, setTitle] = useState("");
+  const [summary, setSummary] = useState("");
   const [post, setPost] = useState("");
   const [error, setError] = useState("");
 
   const changeTitle = (event) => {
     setTitle(event.target.value);
+  };
+
+  const changeSummary = (event) => {
+    setSummary(event.target.value);
   };
 
   const postBlog = () => {
@@ -65,13 +70,45 @@ function AddBlog() {
             onChange={changeTitle}
           />
         </div>
+        <div className={styles.Title}>
+          <label htmlFor="summary">Summary:</label>
+          <textarea
+            type="text"
+            value={summary}
+            name="title"
+            onChange={changeSummary}
+          />
+        </div>
         <label className={styles.PostTitle}>Post:</label>
-        <MDEditor
-          value={post}
-          onChange={setPost}
-          hideToolbar={true}
-          height={700}
-        />
+        <div className={styles.MDEditor}>
+          <textarea
+            value={post}
+            onChange={(e) => setPost(e.target.value)}
+            className={styles.TextArea}
+          />
+
+          <div className={styles.PreviewContainer}>
+            <Markdown
+              options={{
+                forceBlock: true,
+                overrides: {
+                  pre: {
+                    props: {
+                      className: "code",
+                    },
+                  },
+                  blockquote: {
+                    props: {
+                      className: "quote",
+                    },
+                  },
+                },
+              }}
+            >
+              {post}
+            </Markdown>
+          </div>
+        </div>
       </div>
       <button className={styles.PostBtn} onClick={() => postBlog()}>
         Post

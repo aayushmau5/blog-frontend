@@ -4,7 +4,6 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 5px 10px;
 }
 
 .EditorContainer {
@@ -13,6 +12,28 @@
   flex-direction: column;
   width: 60%;
   padding: 5px 10px;
+}
+
+.MDEditor {
+  border: 1px solid black;
+  display: flex;
+  height: 600px;
+  overflow: hidden;
+}
+
+.TextArea {
+  flex: 0 0 50%;
+  padding: 10px;
+  overflow: hidden scroll;
+  word-wrap: break-word;
+  outline: none;
+  border: none;
+}
+
+.PreviewContainer {
+  width: 50%;
+  padding: 0 5px;
+  overflow: hidden scroll;
 }
 
 .PostBtn {
@@ -40,7 +61,8 @@
   margin-bottom: 10px;
 }
 
-.Title input {
+.Title input,
+.Title textarea {
   border: 1px solid black;
   font-family: inherit;
   font-size: 20px;
@@ -62,5 +84,20 @@
 @media (max-width: 1000px) {
   .EditorContainer {
     width: 90%;
+  }
+  .MDEditor {
+    flex-direction: column;
+  }
+  .TextArea {
+    border-bottom: 1px solid black;
+  }
+  .PreviewContainer {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1001px) {
+  .TextArea {
+    border-right: 1px solid black;
   }
 }
