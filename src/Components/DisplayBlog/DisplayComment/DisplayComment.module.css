@@ -22,3 +22,15 @@
   font-size: 14px;
   color: gray;
 }
+
+.DeleteBtn {
+  outline: none;
+  border: 1px solid black;
+  color: white;
+  background-color: black;
+  font-family: inherit;
+  padding: 5px 10px;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+}

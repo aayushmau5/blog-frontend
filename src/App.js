@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -117,15 +117,17 @@ function App() {
               <Dashboard userId={userId} />
             </QueryClientProvider>
           </ProtectedRoute>
-          <ProtectedRoute
+          <Route
             exact
             path="/add-blog"
-            isAuthenticated={isAuthenticated}
-          >
-            <QueryClientProvider client={queryClient}>
-              <AddBlog userId={userId} />
-            </QueryClientProvider>
-          </ProtectedRoute>
+            render={(props) => {
+              return isAuthenticated ? (
+                <AddBlog {...props} />
+              ) : (
+                <Redirect to="/login" />
+              );
+            }}
+          ></Route>
           <Route
             exact
             path="/logout"

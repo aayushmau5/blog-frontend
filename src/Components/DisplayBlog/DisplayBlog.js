@@ -11,7 +11,12 @@ function DisplayBlog({ blogData, backTo }) {
 
   if (comments.length !== 0) {
     allComments = comments.map((comment) => (
-      <DisplayComment key={comment._id} commentData={comment} />
+      <DisplayComment
+        key={comment._id}
+        blogId={blog._id}
+        showDelete={blogData.blog.author._id === localStorage.getItem("userId")}
+        commentData={comment}
+      />
     ));
   }
 
@@ -33,6 +38,9 @@ function DisplayBlog({ blogData, backTo }) {
         <div className={styles.BlogDate}>
           <span className={styles.gray}>on </span>
           {date}
+        </div>
+        <div className={styles.Summary}>
+          <em>{blog.summary}</em>
         </div>
         <div className={styles.BlogPost}>
           <Markdown

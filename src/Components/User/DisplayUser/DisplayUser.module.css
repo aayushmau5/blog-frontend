@@ -13,7 +13,8 @@
   text-align: center;
 }
 
-.DeleteBtn {
+.DeleteBtn,
+.EditBtn {
   outline: none;
   border: 1px solid black;
   color: white;

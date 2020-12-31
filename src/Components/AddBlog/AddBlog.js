@@ -5,13 +5,20 @@ import Markdown from "markdown-to-jsx";
 
 import styles from "./AddBlog.module.css";
 
-function AddBlog() {
+function AddBlog({ location }) {
+  let updateBlog = location.state?.updateBlog || false;
+  let blogId = location.state?.blogId || null;
+  let titleVal = location.state?.titleVal || "";
+  let summaryVal = location.state?.summaryVal || "";
+  let postVal = location.state?.postVal || "";
+  let isPublicVal = location.state?.isPublicVal || false;
   const history = useHistory();
 
-  const [title, setTitle] = useState("");
-  const [summary, setSummary] = useState("");
-  const [post, setPost] = useState("");
+  const [title, setTitle] = useState(titleVal);
+  const [summary, setSummary] = useState(summaryVal);
+  const [post, setPost] = useState(postVal);
   const [error, setError] = useState("");
+  const [isPublic, setIsPublic] = useState(isPublicVal);
 
   const changeTitle = (event) => {
     setTitle(event.target.value);
@@ -23,38 +30,77 @@ function AddBlog() {
 
   const postBlog = () => {
     setError("");
-    axios
-      .post(
-        "/blogs/",
-        {
-          title: title,
-          post: post,
-          public: true,
-        },
-        { withCredentials: true }
-      )
-      .then((result) => {
-        if (result.status === 200) {
-          history.push("/dashboard");
-        }
-      })
-      .catch((err) => {
-        if (err.response) {
-          console.log(err.response);
-          if (err.response.status === 422) {
-            setError(
-              err.response.data.errors[0].title ||
-                err.response.data.errors[0].post ||
-                err.response.data.errors[0].public
-            );
+    if (updateBlog) {
+      axios
+        .put(
+          `/blogs/blog/${blogId}`,
+          {
+            title: title,
+            summary: summary,
+            post: post,
+            public: isPublic,
+          },
+          { withCredentials: true }
+        )
+        .then((result) => {
+          if (result.status === 200) {
+            history.push("/dashboard");
           }
-          if (err.response.status === 401) {
-            setError("Unauthorized. Please Login Again");
+        })
+        .catch((err) => {
+          if (err.response) {
+            console.log(err.response);
+            if (err.response.status === 422) {
+              setError(
+                err.response.data.errors[0].title ||
+                  err.response.data.errors[0].post ||
+                  err.response.data.errors[0].summary ||
+                  err.response.data.errors[0].public
+              );
+            }
+            if (err.response.status === 401) {
+              setError("Unauthorized. Please Login Again");
+            }
+          } else {
+            setError(err.message);
           }
-        } else {
-          setError(err.message);
-        }
-      });
+        });
+    } else {
+      axios
+        .post(
+          "/blogs/",
+          {
+            title: title,
+            summary: summary,
+            post: post,
+            public: isPublic,
+          },
+          { withCredentials: true }
+        )
+        .then((result) => {
+          if (result.status === 200) {
+            history.push("/dashboard");
+          }
+        })
+        .catch((err) => {
+          if (err.response) {
+            console.log(err.response);
+            if (err.response.status === 422) {
+              setError(
+                err.response.data.errors[0].title ||
+                  err.response.data.errors[0].post ||
+                  err.response.data.errors[0].summary ||
+                  err.response.data.errors[0].public
+              );
+            }
+            if (err.response.status === 401) {
+              setError("Unauthorized. Please Login Again");
+            }
+          } else {
+            setError(err.message);
+          }
+        });
+    }
   };
 
   return (
@@ -78,6 +124,19 @@ function AddBlog() {
             name="title"
             onChange={changeSummary}
           />
+        </div>
+        <div className={styles.Title}>
+          <div>
+            <label>Visibility:</label>
+            <input
+              type="checkbox"
+              checked={isPublic}
+              name="public"
+              id="public"
+              onChange={() => setIsPublic((old) => !old)}
+            />
+            <label htmlFor="public">Public</label>
+          </div>
         </div>
         <label className={styles.PostTitle}>Post:</label>
         <div className={styles.MDEditor}>
@@ -111,7 +170,7 @@ function AddBlog() {
         </div>
       </div>
       <button className={styles.PostBtn} onClick={() => postBlog()}>
-        Post
+        {updateBlog ? "Update" : "Post"}
       </button>
     </div>
   );

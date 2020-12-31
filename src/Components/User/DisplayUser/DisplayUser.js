@@ -1,7 +1,8 @@
-import styles from "./DisplayUser.module.css";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+
+import styles from "./DisplayUser.module.css";
 
 function DisplayUser({ userData, showHeading, showDelete }) {
   const [error, setError] = useState(null);
@@ -42,18 +43,36 @@ function DisplayUser({ userData, showHeading, showDelete }) {
           const summary = blog.post.slice(0, 80) + "...";
           return (
             <div key={blog._id} className="card">
+              {showDelete ? (blog.isPublic ? "(Public)" : "(Private)") : null}
               <div className="blogs-title">
                 <Link to={`/blog/${blog._id}`}>{blog.title}</Link>
               </div>
               <div className="blogs-post">{summary}</div>
               <div className="blogs-date">{date}</div>
               {showDelete ? (
-                <button
-                  className={styles.DeleteBtn}
-                  onClick={() => deleteBlog(blog._id)}
-                >
-                  Delete
-                </button>
+                <>
+                  <Link
+                    to={{
+                      pathname: "/add-blog",
+                      state: {
+                        updateBlog: true,
+                        blogId: blog._id,
+                        titleVal: blog.title,
+                        summaryVal: blog.summary,
+                        postVal: blog.post,
+                        isPublicVal: blog.isPublic,
+                      },
+                    }}
+                  >
+                    <button className={styles.EditBtn}>Edit</button>
+                  </Link>
+                  <button
+                    className={styles.DeleteBtn}
+                    onClick={() => deleteBlog(blog._id)}
+                  >
+                    Delete
+                  </button>
+                </>
               ) : null}
             </div>
           );
