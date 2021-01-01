@@ -22,7 +22,6 @@ function Blogs() {
   if (data) {
     blogs = data.data.blogs;
     totalPage = Math.ceil(data.data.blogs.length / dataPerPage);
-    console.log(totalPage, blogs);
   }
 
   if (status === "loading") {

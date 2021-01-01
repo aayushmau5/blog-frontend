@@ -40,7 +40,7 @@ function DisplayUser({ userData, showHeading, showDelete }) {
           let date = new Date(blog.createdAt);
           date = date.toDateString();
 
-          const summary = blog.post.slice(0, 80) + "...";
+          const summary = blog.summary.slice(0, 100) + "...";
           return (
             <div key={blog._id} className="card">
               {showDelete ? (blog.isPublic ? "(Public)" : "(Private)") : null}

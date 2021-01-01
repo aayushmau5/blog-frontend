@@ -13,7 +13,7 @@ function Logout({ validate, setId }) {
         }
       })
       .catch((err) => {
-        console.log(err);
+        <Redirect to="/" />;
       });
   };
 

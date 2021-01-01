@@ -5,8 +5,7 @@ function Card({ blogData }) {
   let date = new Date(blogData.createdAt);
   date = date.toDateString();
 
-  // const summary = blogData.summary.slice(0, 100) + "...";
-  const summary = 'summary';
+  const summary = blogData.summary.slice(0, 100) + "...";
 
   return (
     <>

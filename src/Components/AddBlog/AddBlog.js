@@ -45,7 +45,6 @@ function AddBlog({ location }) {
         })
         .catch((err) => {
           if (err.response) {
-            console.log(err.response);
             if (err.response.status === 422) {
               setError(
                 err.response.data.errors[0].title ||
@@ -76,7 +75,6 @@ function AddBlog({ location }) {
         })
         .catch((err) => {
           if (err.response) {
-            console.log(err.response);
             if (err.response.status === 422) {
               setError(
                 err.response.data.errors[0].title ||
