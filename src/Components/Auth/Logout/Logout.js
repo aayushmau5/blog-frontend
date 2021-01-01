@@ -4,12 +4,12 @@ import { Redirect } from "react-router-dom";
 function Logout({ validate, setId }) {
   const logout = () => {
     axios
-      .get("/user/logout", { withCredentials: true })
+      .get("/user/logout")
       .then((result) => {
         if (result.status === 200) {
           setId(null);
           validate();
-          localStorage.setItem('userId', null);
+          localStorage.setItem("userId", null);
         }
       })
       .catch((err) => {

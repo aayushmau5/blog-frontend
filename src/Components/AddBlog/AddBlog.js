@@ -32,16 +32,12 @@ function AddBlog({ location }) {
     setError("");
     if (updateBlog) {
       axios
-        .put(
-          `/blogs/blog/${blogId}`,
-          {
-            title: title,
-            summary: summary,
-            post: post,
-            public: isPublic,
-          },
-          { withCredentials: true }
-        )
+        .put(`/blogs/blog/${blogId}`, {
+          title: title,
+          summary: summary,
+          post: post,
+          public: isPublic,
+        })
         .then((result) => {
           if (result.status === 200) {
             history.push("/dashboard");
@@ -67,16 +63,12 @@ function AddBlog({ location }) {
         });
     } else {
       axios
-        .post(
-          "/blogs/",
-          {
-            title: title,
-            summary: summary,
-            post: post,
-            public: isPublic,
-          },
-          { withCredentials: true }
-        )
+        .post("/blogs/", {
+          title: title,
+          summary: summary,
+          post: post,
+          public: isPublic,
+        })
         .then((result) => {
           if (result.status === 200) {
             history.push("/dashboard");

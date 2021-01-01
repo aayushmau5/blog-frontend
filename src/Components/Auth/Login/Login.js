@@ -16,7 +16,7 @@ function Login({ validate, isAuthenticated, setId }) {
     setUsernameError("");
     setLoginError("");
     axios
-      .post("/user/login", data, { withCredentials: true })
+      .post("/user/login", data)
       .then((result) => {
         if (result.status === 200) {
           setSubmitting(false);

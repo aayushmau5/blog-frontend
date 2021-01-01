@@ -12,7 +12,7 @@ function DisplayUser({ userData, showHeading, showDelete }) {
   const deleteBlog = (id) => {
     setError(null);
     axios
-      .delete(`/blogs/blog/${id}`, { withCredentials: true })
+      .delete(`/blogs/blog/${id}`)
       .then((result) => {
         if (result.status === 200) {
           history.push({ pathname: "/empty" });

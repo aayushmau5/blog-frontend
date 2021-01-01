@@ -13,9 +13,7 @@ function DisplayComment({ commentData, blogId, showDelete }) {
   const deleteComment = () => {
     setError("");
     axios
-      .delete(`/blogs/blog/${blogId}/comment/${commentData._id}`, {
-        withCredentials: true,
-      })
+      .delete(`/blogs/blog/${blogId}/comment/${commentData._id}`)
       .then((result) => {
         if (result.status === 200) {
           history.push({ pathname: "/empty" });

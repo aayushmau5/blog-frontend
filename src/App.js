@@ -17,6 +17,7 @@ import Logout from "./Components/Auth/Logout/Logout";
 import AddBlog from "./Components/AddBlog/AddBlog";
 
 axios.defaults.baseURL = "https://aayushblogs.herokuapp.com";
+axios.defaults.withCredentials = true;
 
 const queryClient = new QueryClient();
 
@@ -26,7 +27,7 @@ function App() {
 
   const validate = () => {
     axios
-      .get("/user/check", { withCredentials: true })
+      .get("/user/check")
       .then((result) => {
         if (result.status === 200) {
           setIsAuthenticated(true);

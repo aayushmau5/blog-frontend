@@ -14,7 +14,7 @@ function Signup({ validate, isAuthenticated, setId }) {
     setSubmitting(true);
     setUsernameError("");
     axios
-      .post("/user/signup", data, { withCredentials: true })
+      .post("/user/signup", data)
       .then((result) => {
         if (result.status === 200) {
           setSubmitting(false);
