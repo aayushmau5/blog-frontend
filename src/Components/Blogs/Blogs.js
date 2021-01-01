@@ -21,7 +21,8 @@ function Blogs() {
 
   if (data) {
     blogs = data.data.blogs;
-    totalPage = Math.ceil(data.data.totalBlogs / dataPerPage);
+    totalPage = Math.ceil(data.data.blogs.length / dataPerPage);
+    console.log(totalPage, blogs);
   }
 
   if (status === "loading") {
@@ -36,11 +37,11 @@ function Blogs() {
     <div className="blogs-home">
       <h1 className="blogs-heading">Blogs</h1>
       <div className="pagination-links">
-        {page !== 1 ? (
+        {page !== 1 && page !== 0 ? (
           <button onClick={() => setPage((oldVal) => oldVal - 1)}>Prev</button>
         ) : null}
         <div className="page-num">{page}</div>
-        {page !== totalPage ? (
+        {page !== totalPage && totalPage !== 0 ? (
           <button onClick={() => setPage((oldVal) => oldVal + 1)}>Next</button>
         ) : null}
       </div>

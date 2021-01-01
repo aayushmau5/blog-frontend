@@ -16,7 +16,7 @@ import Dashboard from "./Components/Dashboard/Dashboard";
 import Logout from "./Components/Auth/Logout/Logout";
 import AddBlog from "./Components/AddBlog/AddBlog";
 
-axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.baseURL = "https://aayushblogs.herokuapp.com";
 
 const queryClient = new QueryClient();
 
