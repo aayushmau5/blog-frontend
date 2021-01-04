@@ -1,10 +1,14 @@
 # blog-frontend
 
-Frontend for my RESTful blog API.
+Frontend for my RESTful [blog API](https://github.com/aayushmau5/blog-api)
 
 Made using **react**
 
 ### Images
+
+#### Blog Page
+
+![Blog Page](images/blogpage.png)
 
 #### Home page
 
